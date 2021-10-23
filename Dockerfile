@@ -1,8 +1,10 @@
 FROM texlive/texlive:latest
 
-RUN apt update && \
-  apt install -qy inkscape && \
-  apt install python && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -qy inkscape && \
+  apt-get install python && \
   pip install Pygments && \
   apt-get autoremove -qy --purge && \
   rm -rf /var/lib/apt/lists/* && \
